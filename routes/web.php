@@ -1,5 +1,11 @@
 <?php
 
+use App\Http\Controllers\AboutController;
+use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PageController;
+use App\Http\Controllers\PhotoController;
+use App\Http\Controllers\WelcomeController;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Route;
 
@@ -18,54 +24,55 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::get('/hello', function () {
-    return 'Hello World';
-});
+// Route::get('/hello', [WelcomeController::class,'hello']);
 
-Route::get('/world', function () {
-    return 'World';
-});
+// Route::get('/world', function () {
+//     return 'World';
+// });
 
-Route::get('/', function () {
-    return 'selamat datang';
-});
+Route::get('/', [HomeController::class,'index']);
+Route::get('/about', [AboutController::class,'about']);
+Route::get('articles/{id?}', [ArticleController::class,'articles']);
 
+Route::resource('photos', PhotoController::class);
+Route::resource('photos', PhotoController::class)->only(['index', 'show']);
+Route::resource('photos', PhotoController::class)->except(['create','store','update','destroy']);
 //route about
-Route::get('/about', function () {
-    return View('about');
-});
+// Route::get('/about', function () {
+//     return View('about');
+// });
 
 // Route::get('/user/{name}', function ($name) {
 //     return 'nama saya adalaaahh ' . $name;
 // });
 
-Route::get('posts/{post}/comments/{comment}', function ($postId, $commentId) {
-    return 'post ke - ' . $postId . ' Komentar ke - ' . $commentId;
-});
+// Route::get('posts/{post}/comments/{comment}', function ($postId, $commentId) {
+//     return 'post ke - ' . $postId . ' Komentar ke - ' . $commentId;
+// });
 
-Route::get('artikel/{id}', function ($id) {
-    return 'Halaman artikel dengan ID  ' . $id;
-});
+// Route::get('artikel/{id}', function ($id) {
+//     return 'Halaman artikel dengan ID  ' . $id;
+// });
 
-Route::get('/user/{name?}', function ($name = null) {
-    return 'nama saya adalaaaaaaaahh ' . $name;
-});
+// Route::get('/user/{name?}', function ($name = null) {
+//     return 'nama saya adalaaaaaaaahh ' . $name;
+// });
 
 
-//route Name <<<
-Route::get('/user/profile', function () {
-    //
-})->name('profile');
+// //route Name <<<
+// Route::get('/user/profile', function () {
+//     //
+// })->name('profile');
 
-Route::get('/user/profile', [UserProfileController::class, 'show'])->name('profile');
+// // Route::get('/user/profile', [UserProfileController::class, 'show'])->name('profile');
 
-//Generating URLs
-$url = route('profile');
+// //Generating URLs
+// $url = route('profile');
 
-//Generating redirects
-return redirect()->route('profile');
+// //Generating redirects
+// return redirect()->route('profile');
 
-//Route Name >>>
+// //Route Name >>>
 
 //Route Group dan Route Prefixes <<<
 //Beberapa route yang memiliki atribut yang sama seperti middleware yang sama dapat dikelompokkan menjadi satu kelompok untuk mempermudah penulisan route selain digunakan untuk middleware masih ada lagi penggunaan route group untuk route yang berada dibawah satu subdomain. Contoh penggunaan route group adalah sebagai berikut:
