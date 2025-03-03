@@ -1,5 +1,6 @@
 <body>
-    <h1>Tambah Data User</h1>
+    <h1>Tambah Data User</h1>    <a href={{route('user')}}>Kembali</a>
+    <br><br>
     <form action="{{ route('tambah_simpan') }}" method="POST">
     {{csrf_field()}}
 

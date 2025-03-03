@@ -53,7 +53,7 @@ Route::get('/kategori', [KategoriController::class, 'index']);
 Route::get('/user', [UserController::class, 'index'])->name('user');
 
 //week4
-Route::get('/user/tambah', [UserController::class, 'tambah']);
+Route::get('/user/tambah', [UserController::class, 'tambah'])->name('tambah');
 Route::post('/user/tambah_simpan', [UserController::class, 'tambah_simpan'])->name('tambah_simpan');
 Route::get('/user/ubah/{id}', [UserController::class, 'ubah'])->name('ubah');
 Route::put('/user/ubah_simpan/{id}',[UserController::class,'ubah_simpan'])->name('ubah_simpan');
