@@ -20,13 +20,19 @@ class UserController extends Controller
             'title' => 'Dafter user yang terdaftar di dalam sistem',
         ];
         $active_menu = 'user'; //menu yg sedang aktif
+        $level = LevelModel::all();
 
-        return view('user.index', compact('breadcrumb', 'page', 'active_menu'));
+        return view('user.index', compact('breadcrumb', 'page', 'level', 'active_menu'));
     }
 
     public function list(Request $request)
     {
         $users = UserModel::select('user_id', 'username', 'nama', 'level_id')->with('level');
+        //filter data user berdasarkan level_id
+        if ($request->level_id) {
+            $users->where('level_id', $request->level_id);
+        }
+
         return datatables()->of($users)
             //menambahkan kolom index / no urut (default nama kolom: DT_RowIndex)
             ->addIndexColumn()
@@ -137,7 +143,7 @@ class UserController extends Controller
     public function destroy(string $id)
     {
         $check = UserModel::find($id);
-        if(!$check){
+        if (!$check) {
             return redirect('/user')->with('error', 'User tidak ditemukan');
         }
         try {
