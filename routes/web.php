@@ -23,6 +23,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//week5
+Route::get('/', [WelcomeController::class, 'index']);
+
+
+
+
+// //week4
+// Route::get('/user/tambah', [UserController::class, 'tambah'])->name('tambah');
+// Route::post('/user/tambah_simpan', [UserController::class, 'tambah_simpan'])->name('tambah_simpan');
+// Route::get('/user/ubah/{id}', [UserController::class, 'ubah'])->name('ubah');
+// Route::put('/user/ubah_simpan/{id}',[UserController::class,'ubah_simpan'])->name('ubah_simpan');
+// Route::get('/user/hapus/{id}', [UserController::class, 'hapus'])->name('hapus');
+
+// //week3
+// Route::get('/level', [LevelController::class, 'index']);
+// Route::get('/kategori', [KategoriController::class, 'index']);
+// Route::get('/user', [UserController::class, 'index'])->name('user');
+
 // Route::get('/', function () {
 //     return view('welcome');
 // });
@@ -33,28 +51,16 @@ use Illuminate\Support\Facades\Route;
 //     return 'World';
 // });
 
-Route::get('/', [HomeController::class, 'index']);
-Route::get('/about', [AboutController::class, 'about']);
-Route::get('articles/{id?}', [ArticleController::class, 'articles']);
+// Route::get('/', [HomeController::class, 'index']);
+// Route::get('/about', [AboutController::class, 'about']);
+// Route::get('articles/{id?}', [ArticleController::class, 'articles']);
 
-Route::resource('photos', PhotoController::class);
-Route::resource('photos', PhotoController::class)->only(['index', 'show']);
-Route::resource('photos', PhotoController::class)->except(['create', 'store', 'update', 'destroy']);
+// Route::resource('photos', PhotoController::class);
+// Route::resource('photos', PhotoController::class)->only(['index', 'show']);
+// Route::resource('photos', PhotoController::class)->except(['create', 'store', 'update', 'destroy']);
 
-Route::get('/greeting', function () {
-    return view('blog.hello', ['name' => 'geeeee']);
-});
+// Route::get('/greeting', function () {
+//     return view('blog.hello', ['name' => 'geeeee']);
+// });
 
-Route::get('/greeting', [WelcomeController::class, 'greeting']);
-
-//week3
-Route::get('/level', [LevelController::class, 'index']);
-Route::get('/kategori', [KategoriController::class, 'index']);
-Route::get('/user', [UserController::class, 'index'])->name('user');
-
-//week4
-Route::get('/user/tambah', [UserController::class, 'tambah'])->name('tambah');
-Route::post('/user/tambah_simpan', [UserController::class, 'tambah_simpan'])->name('tambah_simpan');
-Route::get('/user/ubah/{id}', [UserController::class, 'ubah'])->name('ubah');
-Route::put('/user/ubah_simpan/{id}',[UserController::class,'ubah_simpan'])->name('ubah_simpan');
-Route::get('/user/hapus/{id}', [UserController::class, 'hapus'])->name('hapus');
+// Route::get('/greeting', [WelcomeController::class, 'greeting']);

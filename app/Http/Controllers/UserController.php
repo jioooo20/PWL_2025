@@ -2,58 +2,57 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\LevelModel;
 use App\Models\UserModel;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-    public function index()
+    /**
+     * Display a listing of the resource.
+     */
+
+
+
+
+    /**
+     * Show the form for creating a new resource.
+     */
+
+
+    /**
+     * Store a newly created resource in storage.
+     */
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
     {
-        $User = UserModel::with('level')->get();
-        return view('user', ['data' => $User]);
+        //
     }
 
-    public function tambah()
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id)
     {
-        return view('user_tambah');
+        //
     }
 
-    public function tambah_simpan(Request $request)
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id)
     {
-        UserModel::create([
-            'username' => $request->username,
-            'nama' => $request->nama,
-            'password' => Hash::make('$request->password'),
-            'level_id' => $request->level_id
-        ]);
-        return redirect('/user');
-
-        // $User = new UserModel();
-        // $User->name = $request->name;
-        // $User->email = $request->email;
-        // $User->password = Hash::make($request->password);
-        // $User->save();
-    }
-    public function ubah($id){
-        $user = UserModel::find($id);
-        return view('user_ubah', ['data'=>$user]);
+        //
     }
 
-    public function ubah_simpan($id, Request $request){
-        $user = UserModel::find($id);
-        $user->username = $request->username;
-        $user->nama = $request->nama;
-        $user->password = Hash::make('$request->password');
-        $user->level_id = $request->level_id;
-        $user->save();
-
-        return redirect('/user');
-    }
-
-    public function hapus($id){
-        $user = UserModel::find($id);
-        $user->delete();
-        return redirect('/user');
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
+    {
+        //
     }
 }
